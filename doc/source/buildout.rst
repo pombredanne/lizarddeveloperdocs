@@ -111,7 +111,71 @@ files around...
 Buildout
 --------
 
+We use buildout to manage our projects. For every project, you need to collect
+several python dependencies (with the right versions). See
+http://reinout.vanrees.org/weblog/2010/04/14/buildout.html for a good
+introduction.
+
+The dependencies are specified in python's ``setup.py`` files. Every lizard
+app and every lizard site has one. See
+http://reinout.vanrees.org/weblog/2010/02/22/packaging-with-setuptools.html
+for a good introduction.
+
+In fact, read the whole of Reinout's blog entries `about software releases
+<http://reinout.vanrees.org/weblog/tags/softwarereleasesseries.html>`_ to get
+a good feel for Nelen & Schuurmans' software release setup. But you'll have to
+replace "svn" with "git" when reading it.
 
 
 Nensskel
 --------
+
+The last of that software releases series is about `software skeletons
+<http://reinout.vanrees.org/weblog/2010/07/30/skeleton.html>`_. Our software
+skeleton generator is nensskel: http://pypi.python.org/pypi/nensskel .
+
+With it, you can generate a complete python library or a lizard app or a
+lizard site, ready to start working. We made it because there are a lot of
+moving parts in a python project. A ``setup.py``, a buildout configuration,
+etcetera.
+
+
+Quality
+-------
+
+Another reason for nensskel, mentioned above, is to help you make quality
+software.
+
+- A test command is ready for you (``bin/test``) with a sample test. You only
+  have to create more of them!
+
+- There is already a ``README.rst``. So fill it in!
+
+- If you need more documentation, the ``doc/`` directory is ready for you if
+  you need to make more elaborate documentation, this uses `sphinx
+  <http://sphinx.pocoo.org/>`_. Run sphinx with ``bin/sphinx``.
+
+- There is already a ``CHANGES.rst`` where you can fill in major changes.
+
+So: a lot is in place to help you write good software!
+
+
+Making releases
+---------------
+
+TODO.
+
+http://packages.lizardsystem.nl
+
+Some on pypi.
+
+All actual tagging and version-upping happens with `zest.releaser
+<zestreleaser.readthedocs.org/>`_. See
+http://reinout.vanrees.org/weblog/2010/02/24/zest.releaser-easy-tags.html for
+a quick introduction.
+
+
+Versions ("KGS")
+----------------
+
+Explain http://packages.lizardsystem.nl/kgs as used in our buildouts.
