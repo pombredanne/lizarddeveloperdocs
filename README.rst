@@ -1,9 +1,30 @@
 Developer documentation for lizard
 ==========================================
 
-**Note**: the first intention of this documentation is for use at
-`Nelen & Schuurmans <http://www.nelen-schuurmans.nl>`_ as a description of
-what you'll need to know as a new developer. Because of this, it is of course
-also very useful to everyone that wants to start working on `Lizard
-<http://lizard.org>`_! You'll probably have to read around the parts where
-Nelen & Schuurmans' internal server setup is discussed :-)
+The intention of these docs is to help:
+
+- New developers at Nelen & Schuurmans.
+
+- Actually everyone wanting to work with `Lizard <http://lizard.org>`_.
+
+The documentation is automatically build upon every push to github and shown
+on readthedocs.org: https://lizard-developer-docs.readthedocs.org
+
+The source code is at https://github.com/nens/lizarddeveloperdocs
+
+`Reinout van Rees <http://reinout.vanrees.org>`_ wrote most of it (at least
+initially) and he liberally sprayed it with pointers at his weblog. So feel
+free to fix it up :-)
+
+To build the documentation locally, do the familiar bootstrap/buildout dance
+to set up the project:
+
+    $ python bootstrap.py
+    $ bin/buildout
+
+Then you can actually build the documentation with:
+
+    $ bin/sphinx
+
+Sphinx, which we use for the documentation, is explained at
+http://sphinx.pocoo.org/ .

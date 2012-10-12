@@ -1,8 +1,10 @@
 Python and buildout: setting up code
 ====================================
 
-Dependencies
-------------
+Note beforehand: there are two different
+
+OS-level dependencies
+---------------------
 
 On your :doc:`machine`, you'll need to install a couple of ubuntu
 packages. Here's a copied list, install it with ``sudo apt-get install

@@ -5,6 +5,8 @@ Project documentation
 
    \setcounter{secnumdepth}{-1}
 
+.. include:: ../../README.rst
+
 .. include:: ../../CHANGES.rst
 
 .. include:: ../../CREDITS.rst
