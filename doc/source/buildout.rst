@@ -19,6 +19,7 @@ package, chef script, whatever), but for now this is a good basis::
       coffeescript \
       curl \
       emacs23-nox \
+      gettext \
       git \
       lessc \
       libjpeg-dev \
