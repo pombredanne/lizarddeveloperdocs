@@ -1,4 +1,4 @@
-Developer documentation for lizard
+Lizard dev docs project
 ==========================================
 
 The intention of these docs is to help:
