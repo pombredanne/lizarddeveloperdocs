@@ -121,15 +121,36 @@ several python dependencies (with the right versions). See
 http://reinout.vanrees.org/weblog/2010/04/14/buildout.html for a good
 introduction.
 
+One handy (read: **very necessary**) time saver on your development machine:
+create a ``.buildout/`` directory in your home dir and put eggs, downloads and
+configs directories underneath that. Then add a ``default.cfg`` in that
+``.buildout/`` directory::
+
+    [buildout]
+    eggs-directory = /home/reinout/.buildout/eggs
+    download-cache = /home/reinout/.buildout/downloads
+    extends-cache = /home/reinout/.buildout/configs
+
+This tells buildout (ALL your buildouts) to store the eggs, downloads (and
+configs, for those extends=http://some.zope.server/version12.cfg lines) in
+those directories. Download once, use everywhere. Saves you a lot of time when
+you have lots of similar projects.
+
+
+Python dependencies ("setup.py")
+--------------------------------
+
 The dependencies are specified in python's ``setup.py`` files. Every lizard
 app and every lizard site has one. See
 http://reinout.vanrees.org/weblog/2010/02/22/packaging-with-setuptools.html
 for a good introduction.
 
-In fact, read the whole of Reinout's blog entries `about software releases
-<http://reinout.vanrees.org/weblog/tags/softwarereleasesseries.html>`_ to get
-a good feel for Nelen & Schuurmans' software release setup. But you'll have to
-replace "svn" with "git" when reading it.
+.. note::
+
+    In fact, read the whole of Reinout's blog entries `about software releases
+    <http://reinout.vanrees.org/weblog/tags/softwarereleasesseries.html>`_ to
+    get a good feel for Nelen & Schuurmans' software release setup. But you'll
+    have to replace "svn" with "git" when reading it.
 
 
 Nensskel
