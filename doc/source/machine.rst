@@ -27,7 +27,9 @@ ubuntu inside a virtualbox virtual machine, managed using `vagrant
 itself, but the need is less big there.
 
 Go to the `vagrant site <http://vagrantup.com/>`_, read the quick install
-guide, download virtualbox and try it out.
+guide, download virtualbox and try it out. Perhaps `Reinout's setup
+<http://reinout.vanrees.org/weblog/2012/10/30/vagrant-osx-how.html>`_ gives
+you some inspiration on how to set it up.
 
 
 Checkouts, git, github
