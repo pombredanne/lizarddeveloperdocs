@@ -189,7 +189,20 @@ So: a lot is in place to help you write good software!
 Making releases
 ---------------
 
-TODO.
+To make a release we need a git tag first. To do this automatically run::
+
+   $ bin/fullrelease
+
+And answer the questions asked by fullrelease.
+To release a release on a server for the first time::
+
+  $ bin/fab staging init
+
+To update a site::
+
+  $ bin/fab staging update
+
+TODO: More on releases and explain staging/production sites.
 
 http://packages.lizardsystem.nl
 
