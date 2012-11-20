@@ -1,7 +1,14 @@
 Python and buildout: setting up code
 ====================================
 
-Note beforehand: there are two different
+Note beforehand: there are two different kinds of dependencies.
+
+- OS-level dependencies that need to be compiled or that are otherwise best
+  handled with ubuntu packages.
+
+- Regular Python packages. Buildout collects and installs those for us, unless
+  they need too much compile work, in those cases we often use ubuntu
+  packages.
 
 .. _sec_osdependencies:
 
