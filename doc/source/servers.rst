@@ -22,6 +22,8 @@ If a site that you know exists is missing, here are some tips. Is it on a new
 server? Perhaps serverinfo hasn't been installed there yet. Can you find any
 of the other sites on that server, perhaps?
 
+To find the actual servers proxied by http://proxy.lizard.net, go to http://proxy.lizard.net/allhosts.htm.
+
 Some notes:
 
 - Serverinfo is currently installed and set up by a fabric script or
