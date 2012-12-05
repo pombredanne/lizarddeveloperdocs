@@ -97,3 +97,11 @@ need to create a database, of course.
 
   $ sudo su postgres
   $ createdb --template=template_postgis --owner=buildout <db_name>
+
+For some versions of Django, there is a problem with postgres and
+psycopg2. Solve "DatabaseError: invalid byte sequence for encoding "UTF8":
+0x00":
+
+  $ sudo emacs /etc/postgresql/9.1/main/postgresql.conf
+
+Uncomment standard_conforming_strings and set it to "off".
