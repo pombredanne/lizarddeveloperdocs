@@ -1,7 +1,17 @@
 Python and buildout: setting up code
 ====================================
 
-Note beforehand: there are two different
+Note beforehand: there are two different kinds of dependencies.
+
+- OS-level dependencies that need to be compiled or that are otherwise best
+  handled with ubuntu packages.
+
+- Regular Python packages. Buildout collects and installs those for us, unless
+  they need too much compile work, in those cases we often use ubuntu
+  packages.
+
+.. _sec_osdependencies:
+
 
 OS-level dependencies
 ---------------------
@@ -110,7 +120,7 @@ As root, you'll need to download, compile and install mapnik::
     $ python scons/scons.py install
 
 The ``PREFIX`` is important, otherwise you'll need to hand-copy some ``.so``
-files around...
+files around... (Jacks test case: it all works as advertised without changes)
 
 
 Buildout
@@ -225,4 +235,13 @@ a quick introduction.
 Versions ("KGS")
 ----------------
 
+We depend on large set of eggs (in the setuptools sense) published on PyPI
+(pypi.python.org) and other indices. Because setuptools (and zc.buildout) will
+typically prefer the latest release for a given package, it is easy to end up
+in a situation where an application ends up pulling in a too-recent release
+that does not work well with the other packages in the system.
+
+This problem can be solved with pinning all releases to a "known good set".
+
 Explain http://packages.lizardsystem.nl/kgs as used in our buildouts.
+

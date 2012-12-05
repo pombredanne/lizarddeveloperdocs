@@ -17,22 +17,24 @@ The source code is at https://github.com/nens/lizarddeveloperdocs
 initially) and he liberally sprayed it with pointers at his weblog. So feel
 free to fix it up :-)
 
-Update Lizard dev docs
-======================
 
-Just edit and commit the docs. The docs on readthedocs are automatically updatedvia a github webhook.
+Update the online Lizard dev docs
+---------------------------------
+
+Just edit and commit the docs. The docs on readthedocs are automatically
+updated via a github webhook.
+
 
 Build the lizard dev docs
-=========================
+-------------------------
 
 To build the documentation locally, do the familiar bootstrap/buildout dance
-to set up the project:
+to set up the project::
 
     $ python bootstrap.py
-
     $ bin/buildout
 
-Then you can actually build the documentation with:
+Then you can actually build the documentation with::
 
     $ bin/sphinx
 

@@ -61,3 +61,47 @@ you'll just need to dive in. Google is your friend. Let someone show you what
 you can do with git and how it works and you'll know enough about git to get
 you into trouble. You'll also know enough to google for the relevant terms to
 get you out of the trouble again.
+
+
+PostgreSQL setup
+----------------
+
+Most of the time, we use the PostgreSQL database. If you install the list of
+:ref:`sec_osdependencies`, PostgreSQL and postgis is included. After that,
+there are some configuration tasks that need doing.
+
+- Modify ``/etc/postgresql/9.1/main/pg_hba.conf`` so that the ``local all all
+  ident`` line looks like ``local all all md5``.
+
+- Become the postgres user (``sudo su postgres``) and run the following
+  commands::
+
+    POSTGIS_SQL_PATH=`pg_config --sharedir`/contrib/postgis-1.5
+    createdb -E UTF8 template_postgis # Create the template spatial database.
+    createlang -d template_postgis plpgsql # Adding PLPGSQL language support.
+    psql -d postgres -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_postgis';"
+    psql -d template_postgis -f $POSTGIS_SQL_PATH/postgis.sql
+    psql -d template_postgis -f $POSTGIS_SQL_PATH/spatial_ref_sys.sql
+    psql -d template_postgis -c "GRANT ALL ON geometry_columns TO PUBLIC;"
+    psql -d template_postgis -c "GRANT ALL ON spatial_ref_sys TO PUBLIC;"
+
+- Still logged in as postgres, create a "buildout" user that can create
+  databases::
+
+   $ createuser --createdb --no-createrole --no-superuser --pwprompt buildout
+
+Note: use the password "buildout".
+
+Now you're set. For every new application/site that you want to run you'll
+need to create a database, of course.
+
+  $ sudo su postgres
+  $ createdb --template=template_postgis --owner=buildout <db_name>
+
+For some versions of Django, there is a problem with postgres and
+psycopg2. Solve "DatabaseError: invalid byte sequence for encoding "UTF8":
+0x00":
+
+  $ sudo emacs /etc/postgresql/9.1/main/postgresql.conf
+
+Uncomment standard_conforming_strings and set it to "off".
