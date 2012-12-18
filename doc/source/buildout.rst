@@ -53,6 +53,27 @@ package, chef script, whatever), but for now this is a good basis::
       subversion \
       unzip
 
+In some cases (WaterSchadeSchatter) you need gdal 1.9.x and python-pyproj will
+give a segmentation fault.
+
+Install GDAL 1.9.x::
+
+    $ sudo aptitude install python-software-properties
+    $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+    $ sudo aptitude update
+    $ sudo aptitude upgrade gdal-bin
+
+Test, it should give info::
+
+    $ gdalinfo "PG:host=10.100.119.153 port=5432 dbname='raster' user='buildout' password='buildout' schema='public' table='data_ahn' where='filename=\'i14ez2_19\'' mode=1"
+
+
+Install alternative pyproj::
+
+    $ sudo apt-get install python-pip
+    $ sudo pip install pyproj
+
+
 Mapnik-on-latest-ubuntu problem
 -------------------------------
 

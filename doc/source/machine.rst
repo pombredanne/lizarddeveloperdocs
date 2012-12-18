@@ -85,6 +85,9 @@ there are some configuration tasks that need doing.
     psql -d template_postgis -c "GRANT ALL ON geometry_columns TO PUBLIC;"
     psql -d template_postgis -c "GRANT ALL ON spatial_ref_sys TO PUBLIC;"
 
+  New system:
+    POSTGIS_SQL_PATH=`pg_config --sharedir`/contrib/postgis-2.0
+
 - Still logged in as postgres, create a "buildout" user that can create
   databases::
 
