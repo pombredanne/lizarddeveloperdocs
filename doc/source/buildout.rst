@@ -196,6 +196,14 @@ lizard site, ready to start working. We made it because there are a lot of
 moving parts in a python project. A ``setup.py``, a buildout configuration,
 etcetera.
 
+To create a new lizard site run::
+
+  $ nensskel SITENAME -t nens_lizardsite
+
+For a lizard app::
+ 
+  $ nensskel lizard-APPNAME -t nens_djangoapp
+
 
 Quality
 -------
