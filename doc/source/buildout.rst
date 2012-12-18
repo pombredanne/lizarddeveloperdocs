@@ -201,7 +201,7 @@ To create a new lizard site run::
   $ nensskel SITENAME -t nens_lizardsite
 
 For a lizard app::
- 
+
   $ nensskel lizard-APPNAME -t nens_djangoapp
 
 
@@ -223,6 +223,26 @@ software.
 - There is already a ``CHANGES.rst`` where you can fill in major changes.
 
 So: a lot is in place to help you write good software!
+
+
+Usage statistics: gaug.es
+-------------------------
+
+Instead of google analytics, we use https://get.gaug.es at
+Nelen&Schuurmans. Log in with username ``info@nelen-schuurmans.nl``.
+
+- Add a new site (and set the time zone to Amsterdam).
+
+- Click, for that new site, on "sharing" and add two users:
+  ``gauges@nelen-schuurmans.nl`` and ``joep.grispen@nelen-schuurmans.nl``.
+
+- CLick on "tracking code" and copy the "data-site-id" number::
+
+      t.setAttribute('data-site-id', '50d02ecsdfsdf6f5a1cedsdf');
+
+- Add that site ID to your ``settings.py`` (production site) or
+  ``stagingsettings.py`` (staging site) as ``UI_GAUGES_SITE_ID``.
+
 
 
 Making releases
@@ -265,4 +285,3 @@ that does not work well with the other packages in the system.
 This problem can be solved with pinning all releases to a "known good set".
 
 Explain http://packages.lizardsystem.nl/kgs as used in our buildouts.
-
