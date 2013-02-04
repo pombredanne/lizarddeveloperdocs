@@ -15,4 +15,5 @@ Nelen & Schuurmans' internal server setup is discussed :-)
    machine
    buildout
    servers
+   packagecomments
    project
