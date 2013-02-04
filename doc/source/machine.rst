@@ -63,6 +63,7 @@ you into trouble. You'll also know enough to google for the relevant terms to
 get you out of the trouble again.
 
 
+
 PostgreSQL setup
 ----------------
 
@@ -76,35 +77,39 @@ there are some configuration tasks that need doing.
 - Become the postgres user (``sudo su postgres``) and run the following
   commands::
 
-    POSTGIS_SQL_PATH=`pg_config --sharedir`/contrib/postgis-1.5
-    createdb -E UTF8 template_postgis # Create the template spatial database.
-    createlang -d template_postgis plpgsql # Adding PLPGSQL language support.
-    psql -d postgres -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_postgis';"
-    psql -d template_postgis -f $POSTGIS_SQL_PATH/postgis.sql
-    psql -d template_postgis -f $POSTGIS_SQL_PATH/spatial_ref_sys.sql
-    psql -d template_postgis -c "GRANT ALL ON geometry_columns TO PUBLIC;"
-    psql -d template_postgis -c "GRANT ALL ON spatial_ref_sys TO PUBLIC;"
+     POSTGIS_SQL_PATH=`pg_config --sharedir`/contrib/postgis-1.5
+     createdb -E UTF8 template_postgis # Create the template spatial database.
+     createlang -d template_postgis plpgsql # Adding PLPGSQL language support.
+     psql -d postgres -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_postgis';"
+     psql -d template_postgis -f $POSTGIS_SQL_PATH/postgis.sql
+     psql -d template_postgis -f $POSTGIS_SQL_PATH/spatial_ref_sys.sql
+     psql -d template_postgis -c "GRANT ALL ON geometry_columns TO PUBLIC;"
+     psql -d template_postgis -c "GRANT ALL ON spatial_ref_sys TO PUBLIC;"
 
-  New system:
-    POSTGIS_SQL_PATH=`pg_config --sharedir`/contrib/postgis-2.0
+  On a really really new ubuntu, you get 2.0 instead of 1.5 postgis. The first
+  line then has to become::
+
+     POSTGIS_SQL_PATH=`pg_config --sharedir`/contrib/postgis-2.0
 
 - Still logged in as postgres, create a "buildout" user that can create
   databases::
 
-   $ createuser --createdb --no-createrole --no-superuser --pwprompt buildout
+     createuser --createdb --no-createrole --no-superuser --pwprompt buildout
 
-Note: use the password "buildout".
+  Note: use the password "buildout".
 
 Now you're set. For every new application/site that you want to run you'll
-need to create a database, of course.
+need to create a database, of course::
 
-  $ sudo su postgres
-  $ createdb --template=template_postgis --owner=buildout <db_name>
+    $ sudo su postgres
+    $ createdb --template=template_postgis --owner=buildout <db_name>
 
-For some versions of Django, there is a problem with postgres and
-psycopg2. Solve "DatabaseError: invalid byte sequence for encoding "UTF8":
-0x00":
+.. note::
 
-  $ sudo emacs /etc/postgresql/9.1/main/postgresql.conf
+    For some versions of Django, there is a problem with postgres and
+    psycopg2. You get an error like::
 
-Uncomment standard_conforming_strings and set it to "off".
+      DatabaseError: invalid byte sequence for encoding "UTF8": 0x00
+
+    To fix it, edit ``/etc/postgresql/9.1/main/postgresql.conf`` and uncomment
+    ``standard_conforming_strings`` and set it to "off".
