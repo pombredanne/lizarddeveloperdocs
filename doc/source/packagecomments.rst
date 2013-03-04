@@ -98,3 +98,44 @@ Afterwards you need to install a new pyproj from pypi. This overrides ubuntu's v
 
     $ sudo apt-get install python-pip
     $ sudo pip install pyproj
+
+
+python-dateutil
+---------------
+
+With python-dateutil you can get an error like this::
+
+    Error: There is a version conflict.
+    We already have: python-dateutil 1.4.1
+    but celery 3.0.11 requires 'python-dateutil>=1.5,<2.0'.
+
+The problem is that the machine in question hasn't been updated to ubuntu
+``12.04 LTS`` yet and has an old python-dateutil. And dateutil gets picked up
+from the syseggs because matplotlib, which we use as a sysegg,
+provides/installs python-dateutil.
+
+The solution is threefold. First install python-dateutil 1.5 manually on the
+server. Note that this doesn't break matplotlib, as far as we know::
+
+    $ sudo pip install python-dateutil==1.5
+
+Second add python-dateutil to your site's setup.py::
+
+    install_requires = [
+        ...
+        'python-dateutil',
+        ...
+        ],
+
+Third add python-dateutil to your sysegg part in the ``development.cfg``
+buildout configuration file. Above matplotlib, otherwise it won't get picked
+up reliably::
+
+    [sysegg]
+    # Add eggs here that are best handled through OS-level packages.
+    recipe = osc.recipe.sysegg
+    force-sysegg = true
+    eggs =
+        python-dateutil
+        matplotlib
+        ...
