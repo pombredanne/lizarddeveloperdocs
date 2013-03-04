@@ -139,3 +139,8 @@ up reliably::
         python-dateutil
         matplotlib
         ...
+
+After you've done this, re-run buildout on the server. You ought to see a
+comforting line like ``sysegg: Using
+/usr/local/lib/python2.7/dist-packages/python_dateutil-1.5-py2.7.egg for
+python-dateutil`` somewhere in the output.
