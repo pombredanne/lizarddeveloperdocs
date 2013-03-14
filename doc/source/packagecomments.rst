@@ -15,18 +15,19 @@ As luck would have it, ubuntu 12.04 LTS includes mapnik 2.0; we still need
 0.7.x. We're made on a handy backported ubuntu package, though. (For details
 on how we created the package, see https://github.com/nens/deb-packages).
 
-Here are the instructions to get it working (everything needs to be done as
-root). First add our custom package repository to ``/etc/apt/sources.list``::
+Here are the instructions to get it working. First add our custom package
+repository to the bottom of ``/etc/apt/sources.list``::
 
     deb http://packages.lizardsystem.nl/ubuntu/precise64/ ./
 
-Then import the package verification key::
+Then import the package verification key and update the package database::
 
-    wget -q http://packages.lizardsystem.nl/ubuntu/public.gpg -O- | sudo apt-key add -
+    $ wget -q http://packages.lizardsystem.nl/ubuntu/public.gpg -O- | sudo apt-key add -
+    $ sudo apt-get update
 
 Lastly install mapnik::
 
-    apt-get install python-mapnik
+    $ sudo apt-get install python-mapnik
 
 
 .. _sec_gdal19:
