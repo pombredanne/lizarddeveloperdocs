@@ -12,70 +12,21 @@ Mapnik-on-latest-ubuntu problem
 -------------------------------
 
 As luck would have it, ubuntu 12.04 LTS includes mapnik 2.0; we still need
-0.7.x. There's nothing you can do at the moment apart from compiling it from
-source. We're working on a handy backported ubuntu package, though.
+0.7.x. We're made on a handy backported ubuntu package, though. (For details
+on how we created the package, see https://github.com/nens/deb-packages).
 
-First, some more ``sudo apt-get install`` work::
+Here are the instructions to get it working (everything needs to be done as
+root). First add our custom package repository to ``/etc/apt/sources.list``::
 
-    $ sudo apt-get install \
-    clang \
-    cpp \
-    g++ \
-    libboost-dev \
-    libboost-filesystem-dev \
-    libboost-iostreams-dev \
-    libboost-program-options-dev \
-    libboost-python-dev \
-    libboost-regex-dev \
-    libboost-system-dev \
-    libboost-thread-dev \
-    libcairo2 \
-    libcairo2-dev \
-    libcairomm-1.0-1 \
-    libcairomm-1.0-dev \
-    libfreetype6 \
-    libfreetype6-dev \
-    libgdal1-dev \
-    libgeotiff-dev \
-    libicu-dev \
-    libjpeg-dev \
-    libltdl-dev \
-    libltdl7 \
-    libpng-dev \
-    libproj-dev \
-    libsqlite3-dev \
-    libtiff-dev \
-    libtiffxx0c2 \
-    libxml2 \
-    libxml2-dev \
-    postgresql-9.1 \
-    postgresql-9.1-postgis \
-    postgresql-contrib-9.1 \
-    postgresql-server-dev-9.1 \
-    python-cairo \
-    python-cairo-dev \
-    python-dev \
-    python-gdal \
-    python-nose \
-    python-software-properties \
-    ttf-dejavu \
-    ttf-dejavu-core \
-    ttf-dejavu-extra \
-    ttf-unifont
+    deb http://packages.lizardsystem.nl/ubuntu/precise64/ ./
 
-As root, you'll need to download, compile and install mapnik::
+Then import the package verification key::
 
-    $ sudo su
-    $ cd /root
-    $ git clone https://github.com/mapnik/mapnik.git
-    $ cd mapnik
-    $ git checkout 0.7.x
-    $ python scons/scons.py configure PREFIX=/usr
-    $ python scons/scons.py
-    $ python scons/scons.py install
+    wget -q http://packages.lizardsystem.nl/ubuntu/public.gpg -O- | sudo apt-key add -
 
-The ``PREFIX`` is important, otherwise you'll need to hand-copy some ``.so``
-files around... (Jacks test case: it all works as advertised without changes)
+Lastly install mapnik::
+
+    apt-get install python-mapnik
 
 
 .. _sec_gdal19:
