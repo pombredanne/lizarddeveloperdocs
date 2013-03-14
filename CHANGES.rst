@@ -5,6 +5,8 @@ Changelog of lizarddeveloperdocs
 0.1 (unreleased)
 ----------------
 
+- Switched mapnik 0.7 instructions over to "just use our package".
+
 - Added chapter on weird package issues and their workarounds.
 
 - Started chapter on our server setup.
