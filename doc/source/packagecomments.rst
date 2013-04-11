@@ -42,7 +42,11 @@ segmentation fault.
 First install GDAL 1.9.x::
 
     $ sudo aptitude install python-software-properties
+
+(choose stable or unstable)
     $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+    $ sudo add-apt-repository ppa:ubuntugis/ppa
+
     $ sudo aptitude update
     $ sudo aptitude upgrade gdal-bin
 
