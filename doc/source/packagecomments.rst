@@ -55,6 +55,15 @@ Afterwards you need to install a new pyproj from pypi. This overrides ubuntu's v
     $ sudo apt-get install python-pip
     $ sudo pip install pyproj
 
+If you upgraded, you may have to reinstall python-gdal::
+
+    $ sudo apt-get install python-gdal
+
+
+    >>> import osgeo.gdal
+    >>> osgeo.gdal.__version__
+    '1.9.1'
+
 
 python-dateutil
 ---------------
