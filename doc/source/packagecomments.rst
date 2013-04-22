@@ -64,6 +64,9 @@ If you upgraded, you may have to reinstall python-gdal::
     >>> osgeo.gdal.__version__
     '1.9.1'
 
+In your django project, set pyproj in your syseggs. It's also best not to use
+spatialite, it could get in your way and you'll get segmentation faults anyway.
+
 
 python-dateutil
 ---------------
