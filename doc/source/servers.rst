@@ -52,6 +52,11 @@ on the s-web-ws-00-d3.external-nens.local server?
   <https://github.com/nens/apacheproxygenerator>`_ with the
   ``/etc/apache2/generated_proxy.ini`` file.
 
+  The number of domain names and sites started to increase quicker than the
+  amount of offspring of a couple of well-fed rabbits. That's why only Daniël
+  and Reinout can add new sites at the moment (by editing the proxy.lizard.net
+  config).
+
 - For https traffic, the proxy also has `pound <http://www.apsis.ch/pound>`_
   running on port 443. This one "terminates" the https connection and simply
   proxies all ``*.lizard.net`` traffic to the proxy's apache port as regular
