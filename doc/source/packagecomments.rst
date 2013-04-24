@@ -105,3 +105,31 @@ After you've done this, re-run buildout on the server. You ought to see a
 comforting line like ``sysegg: Using
 /usr/local/lib/python2.7/dist-packages/python_dateutil-1.5-py2.7.egg for
 python-dateutil`` somewhere in the output.
+
+
+Newer Numpy version for pandas
+------------------------------
+
+The pandas version we use needs a newer numpy than available in ubuntu 12.04,
+so we pin it in buildout (``1.6.2``, for instance, at the time of
+writing) and remove it from the ``[sysegg]`` part.
+
+Numpy builds correctly and installs itself into buildout's egg
+cache. **Problem:** it isn't picked up by pandas' elaborately mangled
+``setup.py`` script.
+
+The solution is to do a one-time move trick::
+
+    $ cd /usr/lib/pymodules/python2.7
+    $ sudo mv numpy numpy_orig
+    $ sudo ln -s /home/buildout/.buildout/eggs/numpy-1.6.2-py2.7-linux-x86_64.egg/numpy
+
+Then run your buildout as you normally would. This creates the pandas egg that
+will use the buildout-provided numpy just fine.
+
+As it is only the install that needed the move trick, we can restore the
+proper situation again::
+
+    $ cd /usr/lib/pymodules/python2.7
+    $ sudo rm numpy
+    $ sudo mv numpy_orig numpy
