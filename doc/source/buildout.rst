@@ -242,9 +242,10 @@ Nelen&Schuurmans. Log in with username ``info@nelen-schuurmans.nl``.
 - Click, for that new site, on "sharing" and add two users:
   ``gauges@nelen-schuurmans.nl`` and ``joep.grispen@nelen-schuurmans.nl``.
 
-- CLick on "tracking code" and copy the "data-site-id" number::
+- Click on "tracking code" and copy the "data-site-id" number, in this case
+  ``50d02ecsdfsdf6f5a1cedsdf``::
 
-      t.setAttribute('data-site-id', '50d02ecsdfsdf6f5a1cedsdf');
+    t.setAttribute('data-site-id', '50d02ecsdfsdf6f5a1cedsdf');
 
 - Add that site ID to your ``settings.py`` (production site) or
   ``stagingsettings.py`` (staging site) as ``UI_GAUGES_SITE_ID``.
@@ -267,14 +268,18 @@ To update a site::
 
   $ bin/fab staging update
 
-TODO: More on releases and explain staging/production sites.
+.. note::
 
-http://packages.lizardsystem.nl
+    This section is pretty much incomplete. We need more info on releases and
+    explain staging/production sites.
+
+If you make a release of an existing product, the new ``.tgz`` should show up
+on http://packages.lizardsystem.nl in a few minutes. If it is more than 10,
+ask for instance Reinout what's wrong.
 
 See http://doc.lizardsystem.nl/sites/packages.lizardsystem.nl/index.html for
-the documentation on how packages.lizardsystem.nl works.
-
-Some on pypi.
+the documentation on how packages.lizardsystem.nl works and how you can add
+new packages.
 
 All actual tagging and version-upping happens with `zest.releaser
 <zestreleaser.readthedocs.org/>`_. See
