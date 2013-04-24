@@ -35,7 +35,11 @@ Lastly install mapnik::
 
 Installation of GDAL 1.9.x
 --------------------------
-The new features of gdal 1.9.x are increasingly used in websites, including the *waterschadeschatter*, the *3di wms server* and the *ror export server*. To install gdal 1.9.x, add the ubuntugis-unstable repository to the list of software sources::
+
+The new features of gdal 1.9.x are increasingly used in websites,
+including the *waterschadeschatter*, the *3di wms server* and the
+*ror export server*. To install gdal 1.9.x, add the ubuntugis-unstable
+repository to the list of software sources::
 
     $ sudo apt-get install python-software-properties
     $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
@@ -43,15 +47,19 @@ The new features of gdal 1.9.x are increasingly used in websites, including the 
     $ sudo apt-get update
     $ sudo apt-get upgrade python-gdal
 
-There have been problems with pyproj causing segmentation faults. To avoid, do not install python-pyproj via apt-get, but use easy_install to get the latest version from pypi, or even better, add pyproj to the buildout configurateion on a per-project basis.
+There have been problems with pyproj causing segmentation faults. To
+avoid, do not install python-pyproj via apt-get, but use easy_install
+to get the latest version from pypi, or even better, add pyproj to the
+buildout configurateion on a per-project basis.
 
-Version checking::
+Make sure you have at least version 1.9::
 
     >>> import osgeo.gdal
     >>> osgeo.gdal.__version__
     '1.9.1'
 
-Some segmentation faults have been reported during using some combination of pyproj, spatialite and gdal 1.9.x, but no specifics were given.
+Some segmentation faults have been reported during using some combination
+of pyproj, spatialite and gdal 1.9.x, but no specifics were given.
 
 python-dateutil
 ---------------
