@@ -5,6 +5,8 @@ Changelog of lizarddeveloperdocs
 0.1 (unreleased)
 ----------------
 
+- Added better proxy.lizard.net documentation.
+
 - Added ssh hints.
 
 - Added instructions for numpy/pandas.
