@@ -39,6 +39,9 @@ Most of lizard's development takes place on github: see
 https://github.com/lizardsystem/ . There's some utility stuff on
 https://github.com/nens/, but all the lizard apps are in the main one.
 
+Github has a great page about `getting started with github
+<https://help.github.com/articles/set-up-git>`_.
+
 (The lizard *sites*, which might include customer data and passwords, are in
 https://github.com/nens/ in private repositories).
 
@@ -63,12 +66,61 @@ you into trouble. You'll also know enough to google for the relevant terms to
 get you out of the trouble again.
 
 
+SSH: domain login via a config file + connecting from home
+----------------------------------------------------------
+
+To install sites on our servers, you need to connect to them with ssh. Most of
+the servers you should have access to are hooked up to our active directory domain,
+so you can log in with your Nelen & Schuurmans domain username::
+
+    $ ssh reinout.vanrees@p-web-ws-00-d10.external-nens.local
+
+.. note::
+
+    If you cannot log in to a server or if you cannot run ``sudo`` and you
+    think you should, talk to Daniël.
+
+Your local username is probably not the same as your domain username and
+adding ``your.username@`` in front of every host is a pain. Luckily you can
+automate this with a few lines. Edit ``~/.ssh/config`` and add the following::
+
+    Host *.external-nens.local
+        User your.username
+
+    Host ssh.lizard.net
+        User your.username
+
+That ``ssh.lizard.net`` server is the only one you can connect to from outside
+the office. From there, you can ssh to the other servers. Domain login works
+on this one, too.
+
+**Extra** To make your life easier, you can create an ssh key. This way you
+don't need to log in every time: ssh transparently logs you in based on your
+local secret key and your public key on the server. See github's documentation
+on `how to set up an ssh key
+<https://help.github.com/articles/generating-ssh-keys#step-2-generate-a-new-ssh-key>`_.
+
+For every server, you need to do a one-time-only action: copy your new public
+key to a server::
+
+    $ ssh-copy-id p-web-ws-00-d10.external-nens.local
+
+After that, you can ssh to that server without needing a password. If you want
+the same luxury when connecting from home through ``ssh.lizard.net``, adjust
+``~/.ssh/config`` by adding ``ForwardAgent yes``, this forwards your "ssh
+agent connection" which is the one managing your keys. So it looks like this
+then::
+
+    Host ssh.lizard.net
+        User your.username
+        ForwardAgent yes
+
 
 PostgreSQL setup
 ----------------
 
 Most of the time, we use the PostgreSQL database. If you install the list of
-:ref:`sec_osdependencies`, PostgreSQL and postgis is included. After that,
+:ref:`sec_osdependencies`, PostgreSQL and postgis are included. After that,
 there are some configuration tasks that need doing.
 
 - Modify ``/etc/postgresql/9.1/main/pg_hba.conf`` so that the ``local all all

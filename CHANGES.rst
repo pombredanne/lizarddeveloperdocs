@@ -5,6 +5,8 @@ Changelog of lizarddeveloperdocs
 0.1 (unreleased)
 ----------------
 
+- Added ssh hints.
+
 - Added instructions for numpy/pandas.
 
 - Switched mapnik 0.7 instructions over to "just use our package".
