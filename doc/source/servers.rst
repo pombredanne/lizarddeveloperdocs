@@ -22,7 +22,8 @@ If a site that you know exists is missing, here are some tips. Is it on a new
 server? Perhaps serverinfo hasn't been installed there yet. Can you find any
 of the other sites on that server, perhaps?
 
-To find the actual servers proxied by http://proxy.lizard.net, go to http://proxy.lizard.net/allhosts.htm.
+To find the actual servers proxied by http://proxy.lizard.net, go to
+http://proxy.lizard.net/allhosts.htm.
 
 Some notes:
 
@@ -35,6 +36,8 @@ Some notes:
 - The serverinfo code is, for historical reasons, in Reinout's github
   repository: https://github.com/reinout/serverinfo/
 
+
+.. _sec_incoming_traffic_routing:
 
 Incoming traffic routing
 ------------------------
@@ -78,3 +81,23 @@ on the s-web-ws-00-d3.external-nens.local server?
 
 **To recap**, a request goes to proxy.lizard.net. This proxies it to nginx on
 the backend server. Nginx proxies it to a locally running gunicorn.
+
+
+Checklist for adding a new site
+-------------------------------
+
+So you want to add a new site?
+
+- Get Jan-Maarten and/or Daniël to agree to a new domain name. We should not
+  add a new one for every small project, that's way too much of a maintenance
+  burden.
+
+- Do the normal nensskel, github, coding dance to create the site.
+
+- Deploy it on the server with ``bin/fab staging init``, see
+  :ref:`sec_makingreleases`. This also restarts nginx on that server. If you
+  add the desired domain name of your site to ``/etc/hosts`` with the IP
+  address of the server, you can check whether it works.
+
+- Ask Reinout or Daniël to add the site to proxy.lizard.net, see
+  :ref:`sec_incoming_traffic_routing`.

@@ -251,6 +251,7 @@ Nelen&Schuurmans. Log in with username ``info@nelen-schuurmans.nl``.
   ``stagingsettings.py`` (staging site) as ``UI_GAUGES_SITE_ID``.
 
 
+.. _sec_makingreleases:
 
 Making releases
 ---------------
