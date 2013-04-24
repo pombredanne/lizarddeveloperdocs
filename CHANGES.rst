@@ -2,7 +2,7 @@ Changelog of lizarddeveloperdocs
 ===================================================
 
 
-0.1 (unreleased)
+0.1 (2013-04-24)
 ----------------
 
 - Added better proxy.lizard.net documentation.
