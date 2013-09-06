@@ -5,7 +5,8 @@ Changelog of lizarddeveloperdocs
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Switched ubuntugis-unstable for ubuntugis-stable. Updated the mapnik
+  0.7 instructions.
 
 
 0.1 (2013-04-24)
