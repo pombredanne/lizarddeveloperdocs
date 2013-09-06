@@ -15,17 +15,10 @@ As luck would have it, ubuntu 12.04 LTS includes mapnik 2.0; we still need
 0.7.x. We're made on a handy backported ubuntu package, though. (For details
 on how we created the package, see https://github.com/nens/deb-packages).
 
-Here are the instructions to get it working. First add our custom package
-repository to the bottom of ``/etc/apt/sources.list``::
+Instructions on how to get it working are here:
+http://packages.lizardsystem.nl/ubuntu/precise64/
 
-    deb http://packages.lizardsystem.nl/ubuntu/precise64/ ./
-
-Then import the package verification key and update the package database::
-
-    $ wget -q http://packages.lizardsystem.nl/ubuntu/public.gpg -O- | sudo apt-key add -
-    $ sudo apt-get update
-
-Lastly install mapnik::
+Lastly, install mapnik::
 
     $ sudo apt-get install python-mapnik
 
@@ -38,14 +31,19 @@ Installation of GDAL 1.9.x
 
 The new features of gdal 1.9.x are increasingly used in websites,
 including the *waterschadeschatter*, the *3di wms server* and the
-*ror export server*. To install gdal 1.9.x, add the ubuntugis-unstable
+*ror export server*. To install gdal 1.9.x, add the ubuntugis-stable
 repository to the list of software sources::
 
     $ sudo apt-get install python-software-properties
-    $ sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
+    $ sudo add-apt-repository ppa:ubuntugis/ppa --yes
 
     $ sudo apt-get update
     $ sudo apt-get upgrade python-gdal
+
+.. note::
+
+   The mapnik instructions above *also* require you to use the
+   ubuntugis-stable, btw, so that's fine.
 
 There have been problems with pyproj causing segmentation faults. To
 avoid, do not install python-pyproj via apt-get, but use easy_install
@@ -60,6 +58,8 @@ Make sure you have at least version 1.9::
 
 Some segmentation faults have been reported during using some combination
 of pyproj, spatialite and gdal 1.9.x, but no specifics were given.
+
+
 
 python-dateutil
 ---------------
