@@ -24,9 +24,6 @@ Lastly, install mapnik::
     $ sudo apt-get install python-mapnik
 
 
-.. _sec_gdal19:
-
-
 Mapnik 2.2.0
 ------------
 
@@ -45,6 +42,9 @@ See also::
 - https://github.com/mapnik/mapnik/wiki/Mapnik2_Changes
 - https://github.com/mapnik/mapnik/wiki/API-changes-between-v2.0-and-v2.1
 - https://github.com/mapnik/mapnik/wiki/Api-changes-between-v2.1-and-v2.2
+
+
+.. _sec_gdal19:
 
 
 Installation of GDAL 1.9.x
