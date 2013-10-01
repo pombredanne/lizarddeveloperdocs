@@ -11,6 +11,7 @@ instructions.
 Mapnik-on-latest-ubuntu problem
 -------------------------------
 
+** Needs updating **
 As luck would have it, ubuntu 12.04 LTS includes mapnik 2.0; we still need
 0.7.x. We're made on a handy backported ubuntu package, though. (For details
 on how we created the package, see https://github.com/nens/deb-packages).
@@ -24,6 +25,26 @@ Lastly, install mapnik::
 
 
 .. _sec_gdal19:
+
+
+Mapnik 2.2.0
+------------
+
+Some packages need mapnik 2.2.0. Install mapnik 2.2.0 using the following
+steps::
+
+    $ sudo apt-get purge libmapnik* mapnik-utils python-mapnik
+    $ sudo apt-get remove libmapnik* mapnik-utils python-mapnik
+    $ sudo apt-get autoremove
+    $ sudo add-apt-repository ppa:mapnik/v2.2.0
+    $ sudo apt-get update
+    $ sudo apt-get install libmapnik mapnik-utils python-mapnik
+
+See also::
+
+- https://github.com/mapnik/mapnik/wiki/Mapnik2_Changes
+- https://github.com/mapnik/mapnik/wiki/API-changes-between-v2.0-and-v2.1
+- https://github.com/mapnik/mapnik/wiki/Api-changes-between-v2.1-and-v2.2
 
 
 Installation of GDAL 1.9.x
