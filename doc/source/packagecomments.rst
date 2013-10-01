@@ -27,6 +27,10 @@ Lastly, install mapnik::
 Mapnik 2.2.0
 ------------
 
+I had to manually remove the python-mapnik before installing the new one::
+
+$ sudo mv /usr/lib/python2.7/dist-packages/mapnik /usr/lib/python2.7/dist-packages/mapnik-20131001
+
 Some packages need mapnik 2.2.0. Install mapnik 2.2.0 using the following
 steps::
 
